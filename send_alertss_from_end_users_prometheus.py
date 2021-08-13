@@ -7,7 +7,7 @@ client = boto3.client("ses")
 
 def lambda_handler(event, context):
     body = event.get("body")
-    userPoolId = "us-east-1_rnW2fJZwY"
+    userPoolId = "YOUR USERPOOL ID"
     body = json.loads(body)
     alerts = body.get("alerts")
     labels = alerts[0]["labels"]
@@ -33,7 +33,7 @@ def lambda_handler(event, context):
         instance=instance, job=job, namespace=namespace, pod=pod, prometheus=prometheus, service=service, severity=severity, 
         description=description, runbook_url=runbook_url, summary=summary)
     response = client.send_email(
-        Source='sridhar.tanda@fissionlabs.com',
+        Source='SOURCE EMAIL',
         Destination={
             'ToAddresses': [
                 email,
@@ -41,7 +41,7 @@ def lambda_handler(event, context):
         },
         Message={
             'Subject': {
-                'Data': 'Krysp Environment Alert - ' + summary,
+                'Data': 'YOUR EMAIL SUBJECT,
                 'Charset': 'UTF-8'
             },
             'Body': {
