@@ -6,7 +6,7 @@ elb_list = boto3.client('elb')
 
 def lambda_handler(event, context):
     delete_cft = cf.delete_stack(
-        StackName=('krysp-stage-eks')
+        StackName=('YOUR STACK NAME')
     )
     load_balancers = elb_list.describe_load_balancers()
     for elb in load_balancers['LoadBalancerDescriptions']:
