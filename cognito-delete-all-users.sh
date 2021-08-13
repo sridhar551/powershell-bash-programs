@@ -1,4 +1,4 @@
-USER_POOL_ID=us-east-1_rnW2fJZwY
+USER_POOL_ID=YOUR_USERPOOL_ID
 
 RUN=1
 until [ $RUN -eq 0 ] ; do
