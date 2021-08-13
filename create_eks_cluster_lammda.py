@@ -3,13 +3,13 @@ import boto3
 cf = boto3.client('cloudformation')
 
 def lambda_handler(event, context):
-    res = cf.create_stack(
-        StackName=('krysp-stage-eks'),
-        TemplateURL='https://krysp-eks-backup-1622638160-10048.s3.amazonaws.com//eks.yml',
+    response = cf.create_stack(
+        StackName=('YOUR-STACK-NAME'),
+        TemplateURL='S3 TEMPLATE PATH',
         Parameters=[
             {
                 'ParameterKey': 'KeyName',
-                'ParameterValue': 'iopulse'
+                'ParameterValue': 'YOUR NODE GROUP KEY'
             },
             {
                 'ParameterKey': 'NodeInstanceType',
@@ -33,26 +33,26 @@ def lambda_handler(event, context):
             },
             {
                 'ParameterKey': 'ClusterName',
-                'ParameterValue': 'krysp-eks'
+                'ParameterValue': 'YOUR EKS CLUSTER NAME'
             },
             {
                 'ParameterKey': 'VpcId',
-                'ParameterValue': 'vpc-ad85ccd7'
+                'ParameterValue': 'YOUR VPC ID'
             },
             {
                 'ParameterKey': 'NodeGroupName',
-                'ParameterValue': 'krysp-eks-staging'
+                'ParameterValue': 'YOUR NODEGROUP NAME'
             },
             {
                 'ParameterKey': 'PublicSubnet1ID',
-                'ParameterValue': 'subnet-4678b50b'
+                'ParameterValue': 'YOUR SUBNET ID'
             },
             {
                 'ParameterKey': 'PublicSubnet2ID',
-                'ParameterValue': 'subnet-457d4419'
+                'ParameterValue': 'YOUR SUBNET ID'
             },
         ],
-        RoleARN='arn:aws:iam::642168441636:role/krysp-staging-CognitoKubernetesLambdaRole-1LQGM9DHQO5MX',
+        RoleARN='YOUR ROLE ARN',
         Capabilities=["CAPABILITY_IAM"],
     )
-    return res
+    return "success"
