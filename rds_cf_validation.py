@@ -85,3 +85,9 @@ a = {
 p = a["Parameters"]
 c = [(d['ParameterName'], d['ParameterValue']) for d in p if 'ParameterName' in d and 'ParameterValue' in d]
 print(dict(c))
+
+
+x = {}
+y = {}
+common_items = {k: x[k] for k in x if k in y and x[k] == y[k]}
+print(common_items)
